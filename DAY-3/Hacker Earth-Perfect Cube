@@ -1,0 +1,39 @@
+import java.util.*;
+import java.io.*;
+class TestClass {
+    public static int cube(int num,int count)
+    {
+        double cbroot=Math.cbrt(num);
+        int n=(int)cbroot;
+        if(Math.pow(n,3)==num)
+            count++;
+        return count;    
+    }
+    public static void subArray(int n,int arr[])
+    {
+        int dp[][]=new int[n][n];
+        for(int i=0;i<n;i++)
+            dp[i][i]=arr[i];
+        int total=0;
+        for(int l=2;l<=n;l++)
+        {    
+            for(int i=0;i<=n-l;i++)
+            {
+                int j=i+l-1;
+                dp[i][j]=dp[i][j-1]*arr[j];
+                total+=cube(dp[i][j],0);
+            } 
+        }
+        System.out.println(total);   
+    }
+    public static void main(String args[] ) throws Exception {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int arr[]=new int[n];
+        for(int i=0;i<n;i++)
+        {
+            arr[i]=sc.nextInt();
+        }
+        subArray(n,arr);
+    }
+}
