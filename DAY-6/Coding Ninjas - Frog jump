@@ -1,0 +1,36 @@
+Frog jumpimport java.util.* ;
+import java.io.*; 
+public class Solution {
+    public static int frogJump(int n, int heights[]) 
+    {
+        if (n == 0)
+        {
+            return 0;
+        } 
+        else if (n == 1)
+        {
+            return heights[0];
+        }
+        else
+        {
+            int energy = 0;
+            for (int i = 0; i < n - 1;) 
+            {
+                int a = Math.abs(heights[i] - heights[i + 1]);
+                int b = (i + 2 < n) ? Math.abs(heights[i] - heights[i + 2]) : a;
+                
+                if(a >= b) 
+                {
+                    energy += b;
+                    i += 2;
+                } 
+                else
+                {
+                    energy += a;
+                    i += 1;
+                }
+            }
+            return energy;
+        }
+    }
+}
