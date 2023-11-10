@@ -1,0 +1,16 @@
+public class Solution 
+{
+	public static String reverseString(String str) 
+	{
+		String word[]=str.split(" ");
+		int n=word.length;
+		for(int i=0,j=n-1;i<j;i++,j--)
+		{
+			String temp=word[i];
+			word[i]=word[j];
+			word[j]=temp;
+		}
+		String reversedString=String.join(" ",word);
+		return reversedString;
+	}
+}
