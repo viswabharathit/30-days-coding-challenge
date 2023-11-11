@@ -1,0 +1,58 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+	    Scanner sc=new Scanner(System.in);
+	    int t=sc.nextInt();
+	    for(int k=0;k<t;k++)
+	    {
+	        int n=sc.nextInt();
+	        int arr[]=new int[n];
+	       boolean visited[]=new boolean[n];
+	        for(int i=0;i<n;i++)
+	        {
+	            arr[i]=sc.nextInt();
+	            visited[i]=false;
+	        } 
+	        int max=0;
+	       // count=0;
+	        for(int i=0;i<n;i++)
+	        {
+	            int frequency=0;
+	            for(int j=i+1;j<n;j++)
+	            {
+	                if(arr[i]==arr[j])
+	                {
+	                    frequency++;
+	                }
+	            }
+	            if(frequency>max)
+	            {
+	                max=frequency;
+	            }
+	        }
+	        int ans=0;
+            for(int i=0;i<n;i++)
+            {
+                int count=0;
+                for(int j=i+1;j<n;j++)
+                {
+                    if(arr[i]==arr[j] && visited[i]==false)
+                    {
+                        count++;
+                        visited[j]=true;
+                    }    
+                }
+                if(count==max)
+                    ans++;
+            }
+    	    if(ans==1)
+    	        System.out.println("YES");
+    	    else     
+    	        System.out.println("NO");
+	    }
+	}
+}
