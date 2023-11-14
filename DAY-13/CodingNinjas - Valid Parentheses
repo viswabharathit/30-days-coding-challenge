@@ -1,0 +1,23 @@
+import java.util.*;
+
+public class Solution {
+    public static boolean isValidParenthesis(String s) {
+        int n = s.length();
+        Stack<Character> st = new Stack<>();
+        char[] ch = s.toCharArray();
+        Map<Character, Character> parenthesisPairs = new HashMap<>();
+        parenthesisPairs.put(')', '(');
+        parenthesisPairs.put('}', '{');
+        parenthesisPairs.put(']', '[');
+
+        for (int i = 0; i < n; i++) {
+            if (ch[i] == '(' || ch[i] == '{' || ch[i] == '[') {
+                st.push(ch[i]);
+            } else if (st.isEmpty() || st.pop() != parenthesisPairs.get(ch[i])) {
+                return false; // Mismatch or stack is empty
+            }
+        }
+
+        return st.isEmpty();
+    }
+}
