@@ -1,0 +1,32 @@
+import java.util.* ;
+import java.io.*; 
+public class Solution {
+    public static int findMedian(int arr[][], int n, int m) {
+        if(n==1 && m==1)
+            return arr[0][0];
+        int r=n*m;    
+        int array[]=new int[r]; 
+        int k=0;   
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<m;j++)
+            {
+                array[k]=arr[i][j];
+                k++;
+            }
+        } 
+        Arrays.sort(array);
+        if((r%2)==0)
+        {
+            int a=array[r/2];
+            int b=array[(r/2)-1];
+
+            return (a+b)/2;
+        }    
+        else
+        {
+            return array[r/2];
+   
+        }    
+    }
+}
