@@ -1,0 +1,29 @@
+class Solution {
+    public boolean isIsomorphic(String s, String t) 
+    {
+        if(s.length()!=t.length())
+            return false;
+        Map<Character,Character> charMapping = new HashMap<>();
+        for(int i=0;i<s.length();i++)
+        {
+            char ori=s.charAt(i);
+            char replace=t.charAt(i);
+            if(!charMapping.containsKey(ori)){
+                if(!charMapping.containsValue(replace)){
+                    charMapping.put(ori,replace);
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                char mappedCharacter = charMapping.get(ori);
+                if(mappedCharacter!=replace)
+                    return false;
+            }
+        } 
+        return true;   
+    }
+}
