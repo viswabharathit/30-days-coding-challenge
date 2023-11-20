@@ -1,0 +1,22 @@
+import java.util.* ;
+import java.io.*; 
+public class Solution {
+	public static void sortStack(Stack<Integer> st) 
+    {
+        Stack<Integer> temp=new Stack<>();
+        while(!st.empty())
+        {
+            int number=st.pop();
+            while(!temp.empty() && temp.peek()<number)
+            {
+                st.push(temp.pop());
+            }
+            temp.push(number);
+        }
+        while(!temp.empty())
+        {
+            st.push(temp.pop());
+        }
+        // System.out.print(st);
+    }
+}
