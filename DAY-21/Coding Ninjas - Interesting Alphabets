@@ -1,0 +1,23 @@
+import java.util.* ;
+import java.io.*; 
+import java.util.ArrayList;
+
+public class Solution {
+
+	public static ArrayList<ArrayList<Character>> interestingPattern(int n) 
+	{
+		ArrayList<ArrayList<Character>> array1=new ArrayList<>();
+		for(int k=n-1;k>=0;k--)
+		{
+			int i=k;
+			ArrayList<Character> array2=new ArrayList<>();
+			while(i<=n-1)
+			{
+				array2.add((char)('A'+i));
+				i++;
+			}
+				array1.add(array2);
+		}
+			return array1;
+	}
+}
