@@ -1,0 +1,25 @@
+class Solution {
+    public long kthElement( int arr1[], int arr2[], int n, int m, int k) {
+        
+        ArrayList<Integer> arrList=new ArrayList<>();
+        int element=0;
+        for(int i=0;i<n;i++)
+        {
+            arrList.add(arr1[i]);
+        }
+        for(int i=0;i<m;i++)
+        {
+            arrList.add(arr2[i]);
+        }
+        Collections.sort(arrList);
+        for(int i=0;i<arrList.size();i++)
+        {
+            if(i==k-1)
+            {
+                element=arrList.get(i);
+                break;
+            }
+        }
+        return (long)element;
+    }
+}
