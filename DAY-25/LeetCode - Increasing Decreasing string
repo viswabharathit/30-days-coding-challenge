@@ -1,0 +1,35 @@
+class Solution {
+    public String sortString(String s) {
+        int n=s.length();
+        String ans="";
+        int freq[]=new int[26];
+        Arrays.fill(freq,0);
+        for(int i=0;i<n;i++)
+        {
+            int c=s.charAt(i)-'a';
+            freq[c]++;
+        }
+        while(n>0)
+        {
+            for(int i=0;i<26;i++)
+            {
+                if(freq[i]!=0)
+                {
+                    ans+=(char)('a'+i);
+                    freq[i]--;
+                    n--;
+                }
+            }
+            for(int i=25;i>=0;i--)
+            {
+                if(freq[i]!=0)
+                {
+                    ans+=(char)('a'+i);
+                    freq[i]--;
+                    n--;
+                }
+            }
+        }
+    return ans;  
+    }
+}
