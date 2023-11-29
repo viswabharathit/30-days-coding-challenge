@@ -1,0 +1,45 @@
+class Solve {
+    int[] findTwoElement(int nums[], int n) {
+        int missing=-1;
+        for(int i=0;i<n;i++)
+        {
+            int element=nums[i];
+            if(element>=1 && element<=n)
+            {
+                int chair=element-1;
+                if(nums[chair]!=element)
+                {
+                    int temp=nums[chair];
+                    nums[chair]=nums[i];
+                    nums[i]=temp;
+                    i--;
+                }
+            }
+        }
+        for(int i=0;i<n;i++)
+        {
+            if(nums[i]!=i+1)
+            {
+                missing=i+1;
+            }
+        }
+        if(missing==-1)
+        {
+            missing = n+1;
+        }
+        HashSet<Integer> hash=new HashSet<>();
+        int repeating=0;
+        for(int i=0;i<n;i++)
+        {
+            if(!hash.contains(nums[i]))
+                hash.add(nums[i]);
+            else
+            {
+                repeating =nums[i];
+                break;
+            }
+        }
+        int arr[]={repeating ,missing};
+        return arr;
+    }
+}
